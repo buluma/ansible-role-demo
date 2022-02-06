@@ -1,6 +1,6 @@
 ---
 
-- hosts: lemp
+- hosts: localhost
   remote_user: buluma
   become: yes
 
