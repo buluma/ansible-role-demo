@@ -5,5 +5,4 @@ vimrc: "{{ ansible_env.HOME }}/.vimrc"
 install_packages:
   - vim
   - git
-  - powerline-fonts
   - fzf
