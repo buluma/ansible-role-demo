@@ -40,4 +40,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Test Tomcat
-        run: sudo ansible-playbook -K roles/tomcat.yml -vvv
+        run: ansible-playbook -K roles/tomcat.yml -vvv
