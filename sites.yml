@@ -1,7 +1,7 @@
 ---
 
 - hosts: lemp
-  remote_user: hakase
+  remote_user: buluma
   become: yes
 
   roles:
