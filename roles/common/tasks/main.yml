@@ -12,7 +12,6 @@
     upgrade: dist
     update_cache: yes
 
-- name: Setup timezone to Asia/Jakarta
-  timezone:
-    name: Asia/Jakarta
-    state: latest
+- name: Set timezone to Africa/Nairobi
+  community.general.timezone:
+    name: Africa/Nairobi
