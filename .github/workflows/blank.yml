@@ -66,4 +66,4 @@ jobs:
 
         # Runs a single command using the runners shell
         - name: Test Site Build
-          run: ansible-playbook -K roles/lemp/tests/test.yml -vvv
+          run: ansible-playbook -K lemp.yml -vvv
