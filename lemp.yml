@@ -1,6 +1,5 @@
 ---
 - hosts: localhost
   remote_user: root
-  use_backend: yum
   roles:
     - lemp
