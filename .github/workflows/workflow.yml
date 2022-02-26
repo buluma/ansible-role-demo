@@ -9,4 +9,5 @@ jobs:
         uses: "buluma/todo-to-issue-action@v1.0.1"
         id: "todo"
         with:
+          USER_PROJECTS: buluma/Ansible Project/To Do
           PROJECTS_SECRET: ${{ secrets.PROJECTS_SECRET }}
