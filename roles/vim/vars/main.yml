@@ -1,4 +1,7 @@
 ---
+# TODO: Check Project vim
+#  user projects: buluma/Ansible Project/To Do
+
 # vars file for vim
 vim_dir: "{{ ansible_env.HOME }}/.vim"
 vimrc: "{{ ansible_env.HOME }}/.vimrc"
