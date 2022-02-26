@@ -1,6 +1,8 @@
+---
 # This is a basic workflow to help you get started with Actions
-# TODO: Start with ---
-# user projects: buluma/Ansible Project/To Do
+# TODO: Come up with a more imaginative greeting
+#  Everyone uses hello world and it's boring.
+#  user projects: buluma/Ansible Project/To Do
 name: CI
 
 # Controls when the workflow will run
