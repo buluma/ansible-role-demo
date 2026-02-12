@@ -1,0 +1,8 @@
+---
+#
+# Ansible managed
+#
+repository:
+  description: Demo role
+  homepage: https://buluma.github.io/
+  topics: demo, ansible, molecule, playbook
