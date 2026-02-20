@@ -1,13 +1,13 @@
 ---
 - name: Install nginx
-  yum:
+  ansible.builtin.dnf:
     name: nginx16
     state: present
   notify:
     - restart nginx
 
 - name: Make /var/lib/nginx/cache directory
-  file:
+  ansible.builtin.file:
     path: /var/lib/nginx/cache
     state: directory
     owner: nginx
@@ -17,7 +17,7 @@
     - restart nginx
 
 - name: Make /etc/nginx/ssl directory
-  file:
+  ansible.builtin.file:
     path: /etc/nginx/ssl
     state: directory
     owner: nginx

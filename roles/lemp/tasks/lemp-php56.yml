@@ -1,6 +1,6 @@
 ---
 - name: Install LEMP with PHP-FPM 5.6
-  yum:
+  ansible.builtin.dnf:
     name: "{{ item }}"
     state: present
   with_items:

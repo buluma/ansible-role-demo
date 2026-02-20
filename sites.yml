@@ -3,7 +3,7 @@
 # user projects: buluma/Ansible Project/To Do
 - hosts: localhost
   remote_user: buluma
-  become: yes
+  become: true
 
   roles:
     - common

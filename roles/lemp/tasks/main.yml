@@ -1,9 +1,9 @@
 ---
-##
-## yum
-##
-#Validation for new parameter 'use' in yum action plugin which aliases to 'use_backend'
-#Issue: https://github.com/ansible/ansible/issues/70774
+# #
+# # yum
+# #
+# Validation for new parameter 'use' in yum action plugin which aliases to 'use_backend'
+# Issue: https://github.com/ansible/ansible/issues/70774
 - block:
     - name: verify if using both the parameters 'use' and 'use_backend' throw error
       yum:
@@ -11,7 +11,7 @@
         state: present
         use_backend: yum
         use: yum
-      ignore_errors: yes
+      ignore_errors: true
       register: result
 
     - name: verify error
