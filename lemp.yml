@@ -1,7 +1,4 @@
----
-# TODO: Testing
-#  user projects: buluma/Ansible Project/To Do
 - hosts: localhost
   remote_user: root
   roles:
-    - lemp
+  - lemp

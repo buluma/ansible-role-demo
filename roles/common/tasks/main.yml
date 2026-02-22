@@ -1,17 +1,12 @@
----
-# TODO: tasks file for common
-
-- name: Change repository Ubuntu 18.04Step 4 - Setup 'web' Roles
-  ansible.builtin.copy:
-    src: sources.list
-    dest: /etc/apt/
+- ansible.builtin.copy:
     backup: true
-
-- name: Update repository and Upgrade packages
-  ansible.builtin.apt:
-    upgrade: dist
+    dest: /etc/apt/
+    src: sources.list
+  name: Change repository Ubuntu 18.04Step 4 - Setup 'web' Roles
+- ansible.builtin.apt:
     update_cache: true
-
-- name: Set timezone to Africa/Nairobi
-  community.general.timezone:
+    upgrade: dist
+  name: Update repository and Upgrade packages
+- community.general.timezone:
     name: Africa/Nairobi
+  name: Set timezone to Africa/Nairobi

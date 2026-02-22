@@ -1,17 +1,14 @@
----
-# TODO: Check Project Name2
-#  user projects: buluma/Ansible/To do
-
-name: "Workflow"
-on: ["push"]
+name: Workflow
+true:
+- push
 jobs:
   build:
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
     steps:
-      - uses: "actions/checkout@master"
-      - name: "TODO to Issue"
-        uses: "buluma/todo-to-issue-action@v1.0.1"
-        id: "todo"
-        with:
-          USER_PROJECTS: buluma/Ansible/To do
-          PROJECTS_SECRET: ${{ secrets.PROJECTS_SECRET }}
+    - uses: actions/checkout@master
+    - id: todo
+      name: TODO to Issue
+      uses: buluma/todo-to-issue-action@v1.0.1
+      with:
+        PROJECTS_SECRET: ${{ secrets.PROJECTS_SECRET }}
+        USER_PROJECTS: buluma/Ansible/To do

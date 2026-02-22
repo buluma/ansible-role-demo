@@ -1,11 +1,7 @@
----
-# TODO: Test sites
-# user projects: buluma/Ansible Project/To Do
-- hosts: localhost
+- become: true
+  hosts: localhost
   remote_user: buluma
-  become: true
-
   roles:
-    - common
-    - web
-    - db
+  - common
+  - web
+  - db

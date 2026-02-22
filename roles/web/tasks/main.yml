@@ -1,20 +1,23 @@
----
-# tasks file for web
-- name: Install Nginx
-  ansible.builtin.apt:
+- ansible.builtin.apt:
     name: nginx
     state: latest
-
-- name: Instal PHP-FPM
-  ansible.builtin.apt:
-    name: ["php", "php-fpm", "php-common", "php-cli", "php-curl"]
+  name: Install Nginx
+- ansible.builtin.apt:
+    name:
+    - php
+    - php-fpm
+    - php-common
+    - php-cli
+    - php-curl
     state: latest
-
-- name: Configure php.ini
-  ansible.builtin.blockinfile:
-    dest: /etc/php/{{ php_version }}/fpm/php.ini
-    block: |
-      date.time = Asia/Jakarta
-      cgi-fix_pathinfo = 0
+  name: Instal PHP-FPM
+- ansible.builtin.blockinfile:
     backup: true
+    block: 'date.time = Asia/Jakarta
+
+      cgi-fix_pathinfo = 0
+
+      '
+    dest: /etc/php/{{ php_version }}/fpm/php.ini
+  name: Configure php.ini
   notify: restart php-fpm

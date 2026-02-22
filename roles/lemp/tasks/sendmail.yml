@@ -1,25 +1,21 @@
----
-- name: Install Sendmail
-  ansible.builtin.dnf:
-    name: "{{ item }}"
+- ansible.builtin.dnf:
+    name: '{{ item }}'
     state: present
+  name: Install Sendmail
   with_items:
-    - sendmail
-    - sendmail-cf
-    - make
-    - mailx
-
-- name: Remove Postfix
-  ansible.builtin.dnf:
+  - sendmail
+  - sendmail-cf
+  - make
+  - mailx
+- ansible.builtin.dnf:
     name: postfix
     state: absent
-
-- name: Copy Sendmail config
-  ansible.builtin.copy:
-    src: /etc/aliases
+  name: Remove Postfix
+- ansible.builtin.copy:
     dest: /etc/mail/aliases
-
-- name: Enable Sendmail service
-  ansible.builtin.service:
-    name: sendmail
+    src: /etc/aliases
+  name: Copy Sendmail config
+- ansible.builtin.service:
     enabled: true
+    name: sendmail
+  name: Enable Sendmail service

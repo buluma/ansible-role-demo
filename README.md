@@ -11,14 +11,12 @@ Demo role
 This example is taken from [`molecule/default/converge.yml`](https://github.com/buluma/ansible-role-demo/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
 
 ```yaml
----
-- name: Converge
-  hosts: all
-  become: true
+- become: true
   gather_facts: true
-
+  hosts: all
+  name: Converge
   roles:
-    - ansible-role-demo
+  - ansible-role-demo
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
