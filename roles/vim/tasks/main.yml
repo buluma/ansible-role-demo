@@ -1,36 +1,36 @@
 ---
-  - ansible.builtin.package:
-      name: '{{ install_packages }}'
-      state: present
-    become: true
-    name: Install required packages
-    tags:
-      - install_packages
-  - ansible.builtin.file:
-      mode: '0750'
-      path: '{{ item }}'
-      recurse: false
-      state: directory
-    loop:
-      - '{{ vim_dir }}'
-      - '{{ vim_dir }}/autoload'
-      - '{{ vim_dir }}/bundle'
-    name: Ensure .vim/{autoload,bundle} directory exists
-  - ansible.builtin.get_url:
-      dest: '{{ vim_dir }}/autoload/pathogen.vim'
-      url: https://tpo.pe/pathogen.vim
-    name: Ensure Pathogen is in place
-  - ansible.builtin.git:
-      clone: true
-      dest: '{{ vim_dir }}/bundle/{{ item.name }}'
-      recursive: false
-      repo: '{{ item.url }}'
-      update: true
-    loop: '{{ plugins }}'
-    name: Deploy plugins
-  - ansible.builtin.copy:
-      backup: true
-      dest: '{{ vimrc }}'
-      mode: '0640'
-      src: vimrc
-    name: Ensure .vimrc config in place
+- ansible.builtin.package:
+    name: '{{ install_packages }}'
+    state: present
+  become: true
+  name: Install required packages
+  tags:
+  - install_packages
+- ansible.builtin.file:
+    mode: '0750'
+    path: '{{ item }}'
+    recurse: false
+    state: directory
+  loop:
+  - '{{ vim_dir }}'
+  - '{{ vim_dir }}/autoload'
+  - '{{ vim_dir }}/bundle'
+  name: Ensure .vim/{autoload,bundle} directory exists
+- ansible.builtin.get_url:
+    dest: '{{ vim_dir }}/autoload/pathogen.vim'
+    url: https://tpo.pe/pathogen.vim
+  name: Ensure Pathogen is in place
+- ansible.builtin.git:
+    clone: true
+    dest: '{{ vim_dir }}/bundle/{{ item.name }}'
+    recursive: false
+    repo: '{{ item.url }}'
+    update: true
+  loop: '{{ plugins }}'
+  name: Deploy plugins
+- ansible.builtin.copy:
+    backup: true
+    dest: '{{ vimrc }}'
+    mode: '0640'
+    src: vimrc
+  name: Ensure .vimrc config in place

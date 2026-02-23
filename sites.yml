@@ -1,8 +1,8 @@
 ---
-  - become: true
-    hosts: localhost
-    remote_user: buluma
-    roles:
-      - common
-      - web
-      - db
+- become: true
+  hosts: localhost
+  remote_user: buluma
+  roles:
+  - common
+  - web
+  - db

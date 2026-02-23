@@ -1,12 +1,12 @@
 ---
-  - become: true
-    become_flags: -s /bin/bash
-    become_method: su
-    become_user: nobody
-    command: ps aux
-    gather_facts: true
-    hosts: localhost
-    name: Tomcat deployment playbook
-    remote_user: ubuntu
-    roles:
-      - tomcat
+- become: true
+  become_flags: -s /bin/bash
+  become_method: su
+  become_user: nobody
+  command: ps aux
+  gather_facts: true
+  hosts: localhost
+  name: Tomcat deployment playbook
+  remote_user: ubuntu
+  roles:
+  - tomcat

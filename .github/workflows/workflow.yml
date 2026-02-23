@@ -1,15 +1,15 @@
 ---
 name: Workflow
 true:
-  - push
+- push
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - id: todo
-        name: TODO to Issue
-        uses: buluma/todo-to-issue-action@v1.0.1
-        with:
-          PROJECTS_SECRET: ${{ secrets.PROJECTS_SECRET }}
-          USER_PROJECTS: buluma/Ansible/To do
+    - uses: actions/checkout@v6
+    - id: todo
+      name: TODO to Issue
+      uses: buluma/todo-to-issue-action@v2.0.2
+      with:
+        PROJECTS_SECRET: ${{ secrets.PROJECTS_SECRET }}
+        USER_PROJECTS: buluma/Ansible/To do

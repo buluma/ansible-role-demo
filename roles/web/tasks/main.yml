@@ -1,24 +1,24 @@
 ---
-  - ansible.builtin.apt:
-      name: nginx
-      state: latest
-    name: Install Nginx
-  - ansible.builtin.apt:
-      name:
-        - php
-        - php-fpm
-        - php-common
-        - php-cli
-        - php-curl
-      state: latest
-    name: Instal PHP-FPM
-  - ansible.builtin.blockinfile:
-      backup: true
-      block: 'date.time = Asia/Jakarta
+- ansible.builtin.apt:
+    name: nginx
+    state: latest
+  name: Install Nginx
+- ansible.builtin.apt:
+    name:
+    - php
+    - php-fpm
+    - php-common
+    - php-cli
+    - php-curl
+    state: latest
+  name: Instal PHP-FPM
+- ansible.builtin.blockinfile:
+    backup: true
+    block: 'date.time = Asia/Jakarta
 
-        cgi-fix_pathinfo = 0
+      cgi-fix_pathinfo = 0
 
-        '
-      dest: /etc/php/{{ php_version }}/fpm/php.ini
-    name: Configure php.ini
-    notify: restart php-fpm
+      '
+    dest: /etc/php/{{ php_version }}/fpm/php.ini
+  name: Configure php.ini
+  notify: restart php-fpm

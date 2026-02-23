@@ -12,12 +12,12 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
 ```yaml
 ---
-  - become: true
-    gather_facts: true
-    hosts: all
-    name: Converge
-    roles:
-      - ansible-role-demo
+- become: true
+  gather_facts: true
+  hosts: all
+  name: Converge
+  roles:
+  - ansible-role-demo
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
