@@ -1,4 +1,5 @@
-- hosts: localhost
-  remote_user: root
-  roles:
-  - vim
+---
+  - hosts: localhost
+    remote_user: root
+    roles:
+      - vim
