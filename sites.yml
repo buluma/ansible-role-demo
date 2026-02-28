@@ -3,6 +3,6 @@
   hosts: localhost
   remote_user: buluma
   roles:
-  - common
-  - web
-  - db
+    - common
+    - web
+    - db

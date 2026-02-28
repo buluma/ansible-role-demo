@@ -1,7 +1,7 @@
 ---
 install_packages:
-- vim
-- git
-- fzf
-vim_dir: '{{ ansible_env.HOME }}/.vim'
-vimrc: '{{ ansible_env.HOME }}/.vimrc'
+  - vim
+  - git
+  - fzf
+vim_dir: "{{ ansible_env.HOME }}/.vim"
+vimrc: "{{ ansible_env.HOME }}/.vimrc"

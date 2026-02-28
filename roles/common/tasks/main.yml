@@ -1,13 +1,13 @@
 ---
-- ansible.builtin.copy:
+- name: Change repository Ubuntu 18.04Step 4 - Setup 'web' Roles
+  ansible.builtin.copy:
     backup: true
     dest: /etc/apt/
     src: sources.list
-  name: Change repository Ubuntu 18.04Step 4 - Setup 'web' Roles
-- ansible.builtin.apt:
+- name: Update repository and Upgrade packages
+  ansible.builtin.apt:
     update_cache: true
     upgrade: dist
-  name: Update repository and Upgrade packages
-- community.general.timezone:
+- name: Set timezone to Africa/Nairobi
+  community.general.timezone:
     name: Africa/Nairobi
-  name: Set timezone to Africa/Nairobi

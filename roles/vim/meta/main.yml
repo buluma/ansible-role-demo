@@ -5,21 +5,21 @@ galaxy_info:
   company: none
   description: Install vim on your system.
   galaxy_tags:
-  - vim
-  - server
-  - sudo
-  - system
+    - vim
+    - server
+    - sudo
+    - system
   license: Apache-2.0
-  min_ansible_version: '2.10'
+  min_ansible_version: "2.10"
   namespace: buluma
   platforms:
-  - name: Fedora
-    versions:
-    - 33
-  - name: OpenSUSE
-    versions:
-    - all
-  - name: Ubuntu
-    versions:
-    - all
+    - name: Fedora
+      versions:
+        - 33
+    - name: OpenSUSE
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
   role_name: vim

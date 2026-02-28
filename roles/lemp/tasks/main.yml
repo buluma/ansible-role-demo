@@ -1,79 +1,76 @@
 ---
 - block:
-  - ignore_errors: true
-    name: verify if using both the parameters 'use' and 'use_backend' throw
-      error
-    register: result
-    yum:
-      name: at
-      state: present
-      use: yum
-      use_backend: yum
-  - assert:
-      that:
-      - '''parameters are mutually exclusive'' in result.msg'
-      - not result is changed
-    name: verify error
-  - name: verify if package installation is successful using 'use' parameter
-    register: result
-    yum:
-      name: at
-      state: present
-      use: dnf
-  - assert:
-      that:
-      - result is changed
-    name: verify the result
-  - name: remove at package
-    register: result
-    yum:
-      name: at
-      state: absent
-      use: dnf
-  - assert:
-      that:
-      - result is changed
-    name: verify package removal
-  - name: verify if package installation is successful using 'use_backend'
-      parameter
-    register: result
-    yum:
-      name: at
-      state: present
-      use_backend: dnf
-  - assert:
-      that:
-      - result is changed
-    name: verify the result
-  - name: remove at package
-    register: result
-    yum:
-      name: at
-      state: absent
-      use_backend: dnf
-  - assert:
-      that:
-      - result is changed
-    name: verify package removal
-  - name: verify if package installation is successful without using
-      'use_backend' and 'use' parameters
-    register: result
-    yum:
-      name: at
-      state: present
-  - assert:
-      that:
-      - result is changed
-    name: verify the result
-  - name: remove at package
-    register: result
-    yum:
-      name: at
-      state: absent
-  - assert:
-      that:
-      - result is changed
-    name: verify package removal
+    - ignore_errors: true
+      name: verify if using both the parameters 'use' and 'use_backend' throw error
+      register: result
+      yum:
+        name: at
+        state: present
+        use: yum
+        use_backend: yum
+    - assert:
+        that:
+          - "'parameters are mutually exclusive' in result.msg"
+          - not result is changed
+      name: verify error
+    - name: verify if package installation is successful using 'use' parameter
+      register: result
+      yum:
+        name: at
+        state: present
+        use: dnf
+    - assert:
+        that:
+          - result is changed
+      name: verify the result
+    - name: remove at package
+      register: result
+      yum:
+        name: at
+        state: absent
+        use: dnf
+    - assert:
+        that:
+          - result is changed
+      name: verify package removal
+    - name: verify if package installation is successful using 'use_backend' parameter
+      register: result
+      yum:
+        name: at
+        state: present
+        use_backend: dnf
+    - assert:
+        that:
+          - result is changed
+      name: verify the result
+    - name: remove at package
+      register: result
+      yum:
+        name: at
+        state: absent
+        use_backend: dnf
+    - assert:
+        that:
+          - result is changed
+      name: verify package removal
+    - name: verify if package installation is successful without using 'use_backend' and 'use' parameters
+      register: result
+      yum:
+        name: at
+        state: present
+    - assert:
+        that:
+          - result is changed
+      name: verify the result
+    - name: remove at package
+      register: result
+      yum:
+        name: at
+        state: absent
+    - assert:
+        that:
+          - result is changed
+      name: verify package removal
   when: ansible_distribution == "Fedora"
 - include: lemp-php56.yml
 - include: lemp-php70.yml
