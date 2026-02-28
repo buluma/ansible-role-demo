@@ -1,7 +1,7 @@
 ---
 - block:
   - ignore_errors: true
-    name: verify if using both the parameters 'use' and 'use_backend' throw 
+    name: verify if using both the parameters 'use' and 'use_backend' throw
       error
     register: result
     yum:
@@ -34,7 +34,7 @@
       that:
       - result is changed
     name: verify package removal
-  - name: verify if package installation is successful using 'use_backend' 
+  - name: verify if package installation is successful using 'use_backend'
       parameter
     register: result
     yum:
@@ -55,7 +55,7 @@
       that:
       - result is changed
     name: verify package removal
-  - name: verify if package installation is successful without using 
+  - name: verify if package installation is successful without using
       'use_backend' and 'use' parameters
     register: result
     yum:
