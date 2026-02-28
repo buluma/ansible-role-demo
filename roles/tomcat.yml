@@ -9,4 +9,4 @@
   name: Tomcat deployment playbook
   remote_user: ubuntu
   roles:
-  - tomcat
+    - tomcat
