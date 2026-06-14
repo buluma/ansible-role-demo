@@ -1,6 +1,6 @@
 ---
 name: Workflow
-true:
+"on":
   - push
 jobs:
   build:
