@@ -4,4 +4,4 @@
   become: true
   gather_facts: true
   roles:
-    - ansible-role-demo
+    - role: buluma.demo
