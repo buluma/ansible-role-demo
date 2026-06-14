@@ -36,11 +36,11 @@
   ansible.builtin.template:
     dest: /etc/systemd/system/tomcat.service
     src: templates/tomcat.service.j2
-  when: ansible_service_mgr == "systems"
+  when: ansible_facts.service_mgr == "systems"
 - name: Start and enable tomcat
   ansible.builtin.service:
     daemon_reload: true
     enabled: true
     name: tomcat
     state: started
-  when: ansible_service_mgr == "systemd"
+  when: ansible_facts.service_mgr == "systemd"

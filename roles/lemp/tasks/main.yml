@@ -71,7 +71,7 @@
         that:
           - result is changed
       name: verify package removal
-  when: ansible_distribution == "Fedora"
+  when: ansible_facts.distribution == "Fedora"
 - include: lemp-php56.yml
 - include: lemp-php70.yml
 - include: composer.yml
