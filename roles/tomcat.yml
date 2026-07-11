@@ -3,7 +3,6 @@
   become_flags: -s /bin/bash
   become_method: su
   become_user: nobody
-  command: ps aux
   gather_facts: true
   hosts: localhost
   name: Tomcat deployment playbook
