@@ -12,32 +12,35 @@
     home: /usr/share/tomcat
     name: tomcat
   become: true
-  become_method: sudo
-- name: Create a tomcat directory
+- name: Tomcat | Create a tomcat directory
   ansible.builtin.file:
     group: tomcat
+    mode: '0755'
     owner: tomcat
     path: /usr/share/tomcat
     state: directory
-- name: Download Tomcat
+- name: Tomcat | Download Tomcat
   ansible.builtin.get_url:
     dest: "{{ tomcat_download_location }}"
+    mode: '0644'
     url: "{{ tomcat_download_url }}"
-- name: Extract tomcat archive
+- name: Tomcat | Extract tomcat archive
   ansible.builtin.unarchive:
     creates: /usr/share/tomcat/bin
     dest: /usr/share/tomcat
     extra_opts: --strip-components=1
     group: tomcat
+    mode: '0755'
     owner: tomcat
     remote_src: true
     src: "{{ tomcat_download_location }}"
-- name: Copy tomcat service file
+- name: Tomcat | Copy tomcat service file
   ansible.builtin.template:
     dest: /etc/systemd/system/tomcat.service
+    mode: '0644'
     src: templates/tomcat.service.j2
-  when: ansible_facts['service_mgr'] == "systems"
-- name: Start and enable tomcat
+  when: ansible_facts['service_mgr'] == "systemd"
+- name: Tomcat | Start and enable tomcat
   ansible.builtin.service:
     daemon_reload: true
     enabled: true

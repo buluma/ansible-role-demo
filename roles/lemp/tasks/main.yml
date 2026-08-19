@@ -1,82 +1,91 @@
 ---
-- block:
-    - ignore_errors: true
-      name: verify if using both the parameters 'use' and 'use_backend' throw error
-      register: result
-      yum:
+- name: LeMP | Verify package manager on Fedora
+  when: ansible_facts['distribution'] == "Fedora"
+  block:
+    - name: LeMP | Verify mutually exclusive parameters error
+      ansible.builtin.dnf:
         name: at
         state: present
         use: yum
         use_backend: yum
-    - assert:
+      register: lemp_dnf_result
+      ignore_errors: true
+    - name: LeMP | Verify error message
+      ansible.builtin.assert:
         that:
-          - "'parameters are mutually exclusive' in result.msg"
-          - not result is changed
-      name: verify error
-    - name: verify if package installation is successful using 'use' parameter
-      register: result
-      yum:
+          - "'parameters are mutually exclusive' in lemp_dnf_result.msg"
+          - not lemp_dnf_result is changed
+    - name: LeMP | Verify package installation with use parameter
+      ansible.builtin.dnf:
         name: at
         state: present
         use: dnf
-    - assert:
+      register: lemp_dnf_result
+    - name: LeMP | Verify installation result
+      ansible.builtin.assert:
         that:
-          - result is changed
-      name: verify the result
-    - name: remove at package
-      register: result
-      yum:
+          - lemp_dnf_result is changed
+    - name: LeMP | Remove at package with use parameter
+      ansible.builtin.dnf:
         name: at
         state: absent
         use: dnf
-    - assert:
+      register: lemp_dnf_result
+    - name: LeMP | Verify package removal
+      ansible.builtin.assert:
         that:
-          - result is changed
-      name: verify package removal
-    - name: verify if package installation is successful using 'use_backend' parameter
-      register: result
-      yum:
+          - lemp_dnf_result is changed
+    - name: LeMP | Verify package installation with use_backend parameter
+      ansible.builtin.dnf:
         name: at
         state: present
         use_backend: dnf
-    - assert:
+      register: lemp_dnf_result
+    - name: LeMP | Verify installation result with use_backend
+      ansible.builtin.assert:
         that:
-          - result is changed
-      name: verify the result
-    - name: remove at package
-      register: result
-      yum:
+          - lemp_dnf_result is changed
+    - name: LeMP | Remove at package with use_backend parameter
+      ansible.builtin.dnf:
         name: at
         state: absent
         use_backend: dnf
-    - assert:
+      register: lemp_dnf_result
+    - name: LeMP | Verify package removal with use_backend
+      ansible.builtin.assert:
         that:
-          - result is changed
-      name: verify package removal
-    - name: verify if package installation is successful without using 'use_backend' and 'use' parameters
-      register: result
-      yum:
+          - lemp_dnf_result is changed
+    - name: LeMP | Verify package installation without parameters
+      ansible.builtin.dnf:
         name: at
         state: present
-    - assert:
+      register: lemp_dnf_result
+    - name: LeMP | Verify installation result without parameters
+      ansible.builtin.assert:
         that:
-          - result is changed
-      name: verify the result
-    - name: remove at package
-      register: result
-      yum:
+          - lemp_dnf_result is changed
+    - name: LeMP | Remove at package without parameters
+      ansible.builtin.dnf:
         name: at
         state: absent
-    - assert:
+      register: lemp_dnf_result
+    - name: LeMP | Verify package removal without parameters
+      ansible.builtin.assert:
         that:
-          - result is changed
-      name: verify package removal
-  when: ansible_facts['distribution'] == "Fedora"
-- include: lemp-php56.yml
-- include: lemp-php70.yml
-- include: composer.yml
-- include: nginx.yml
-- include: sendmail.yml
-- include: root-config.yml
-- name: Install all updates
-  yum: name=* state=latest
+          - lemp_dnf_result is changed
+- name: LeMP | Include PHP 5.6 tasks
+  ansible.builtin.include_tasks: lemp-php56.yml
+- name: LeMP | Include PHP 7.0 tasks
+  ansible.builtin.include_tasks: lemp-php70.yml
+- name: LeMP | Include Composer tasks
+  ansible.builtin.include_tasks: composer.yml
+- name: LeMP | Include Nginx tasks
+  ansible.builtin.include_tasks: nginx.yml
+- name: LeMP | Include Sendmail tasks
+  ansible.builtin.include_tasks: sendmail.yml
+- name: LeMP | Include Root Config tasks
+  ansible.builtin.include_tasks: root-config.yml
+- name: LeMP | Install all updates
+  ansible.builtin.dnf:
+    name: '*'
+    state: present

@@ -1,9 +1,9 @@
 ---
-- name: Install Nginx
+- name: Web | Install Nginx
   ansible.builtin.apt:
     name: nginx
-    state: latest
-- name: Instal PHP-FPM
+    state: present
+- name: Web | Install PHP-FPM
   ansible.builtin.apt:
     name:
       - php
@@ -11,8 +11,8 @@
       - php-common
       - php-cli
       - php-curl
-    state: latest
-- name: Configure php.ini
+    state: present
+- name: Web | Configure php.ini
   ansible.builtin.blockinfile:
     backup: true
     block: "date.time = Asia/Jakarta\ncgi-fix_pathinfo = 0\n"

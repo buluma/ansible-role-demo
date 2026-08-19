@@ -1,8 +1,6 @@
 ---
 - name: Tomcat deployment playbook
   become: true
-  become_flags: -s /bin/bash
-  become_method: su
   become_user: nobody
   gather_facts: true
   hosts: localhost

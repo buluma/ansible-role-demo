@@ -1,5 +1,6 @@
 ---
-- become: true
+- name: Configure site with common, web, and db roles
+  become: true
   hosts: localhost
   remote_user: buluma
   roles:

@@ -1,9 +1,12 @@
 ---
 dependencies: []
 galaxy_info:
-  author: your name
-  company: your company (optional)
-  description: your role description
-  galaxy_tags: []
-  license: license (GPL-2.0-or-later, MIT, etc)
+  author: ShadowWalker
+  company: ShadowWalker DevOps
+  description: Common system configuration tasks
+  galaxy_tags:
+    - system
+    - common
+    - ubuntu
+  license: MIT
   min_ansible_version: "2.12"

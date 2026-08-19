@@ -4,6 +4,7 @@
     backup: true
     dest: /etc/apt/
     src: sources.list
+    mode: '0644'
 - name: Update repository and Upgrade packages
   ansible.builtin.apt:
     update_cache: true

@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: Configure LEMP stack
+  hosts: localhost
   remote_user: root
   roles:
     - lemp

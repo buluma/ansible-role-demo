@@ -1,12 +1,12 @@
 ---
-- name: Install LEMP with PHP 7.0
+- name: lemp-php70 | Install LEMP with PHP 7.0
   ansible.builtin.dnf:
     name: "{{ item }}"
     state: present
   notify:
     - restart php-fpm
   when:
-    - php_version == 70
+    - lemp_php_version == 70
   with_items:
     - httpd
     - mod_ssl

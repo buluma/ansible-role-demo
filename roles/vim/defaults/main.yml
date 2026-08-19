@@ -1,14 +1,20 @@
 ---
-plugins:
+vim_plugins:
   - name: vim-airline
     url: https://github.com/vim-airline/vim-airline
+    version: master
   - name: nerdtree
     url: https://github.com/preservim/nerdtree
+    version: master
   - name: fzf-vim
     url: https://github.com/junegunn/fzf.vim
+    version: master
   - name: vim-gitgutter
     url: https://github.com/airblade/vim-gitgutter
+    version: master
   - name: vim-fugitive
     url: https://github.com/tpope/vim-fugitive
+    version: master
   - name: vim-floaterm
     url: https://github.com/voldikss/vim-floaterm
+    version: master

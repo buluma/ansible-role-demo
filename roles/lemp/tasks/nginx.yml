@@ -1,23 +1,23 @@
 ---
-- name: Install nginx
+- name: nginx | Install nginx
   ansible.builtin.dnf:
     name: nginx16
     state: present
   notify:
     - restart nginx
-- name: Make /var/lib/nginx/cache directory
+- name: nginx | Make /var/lib/nginx/cache directory
   ansible.builtin.file:
     group: nginx
-    mode: 700
+    mode: "0700"
     owner: nginx
     path: /var/lib/nginx/cache
     state: directory
   notify:
     - restart nginx
-- name: Make /etc/nginx/ssl directory
+- name: nginx | Make /etc/nginx/ssl directory
   ansible.builtin.file:
     group: nginx
-    mode: 700
+    mode: "0700"
     owner: nginx
     path: /etc/nginx/ssl
     state: directory
