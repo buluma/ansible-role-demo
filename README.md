@@ -20,6 +20,48 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
     - role: buluma.demo
 ```
 
+The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-demo/blob/master/molecule/default/prepare.yml):
+
+```yaml
+---
+- name: Prepare
+  hosts: all
+  become: true
+  gather_facts: false
+
+  pre_tasks:
+    - name: Install sudo if missing
+      ansible.builtin.raw: "{{ ansible_pkg_mgr | default('dnf') }} install -y sudo"
+      become: false
+      changed_when: false
+      failed_when: false
+
+    - name: Install python3 if missing
+      ansible.builtin.raw: >-
+        if [ -x /usr/bin/python3 ]; then exit 0; fi;
+        if command -v apt-get >/dev/null 2>&1; then apt-get update && apt-get install -y python3;
+        elif command -v dnf >/dev/null 2>&1; then dnf install -y python3;
+        elif command -v yum >/dev/null 2>&1; then yum install -y python3;
+        elif command -v zypper >/dev/null 2>&1; then zypper -n install python3;
+        else exit 1; fi
+      become: false
+      changed_when: false
+      failed_when: false
+
+    - name: Configure passwordless sudo
+      ansible.builtin.raw: >-
+        if ! grep -q '^%wheel ALL=(ALL) NOPASSWD: ALL' /etc/sudoers; then
+          echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers;
+        fi;
+        visudo -cf /etc/sudoers
+      become: false
+      changed_when: false
+      failed_when: false
+
+  roles:
+    - role: buluma.bootstrap
+```
+
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
 
 
